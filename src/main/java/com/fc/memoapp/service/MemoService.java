@@ -1,0 +1,63 @@
+package com.fc.memoapp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.fc.memoapp.entity.MemoEntity;
+import com.fc.memoapp.repository.MemoRepository;
+
+@Service
+public class MemoService {
+    private final MemoRepository memoRepository;
+    public MemoService(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
+    }
+    public List<MemoEntity> findAll() {
+        return memoRepository.findAll();
+    }
+    public MemoEntity findById(Long id) {
+        Optional<MemoEntity> optional = memoRepository.findById(id);
+        return optional.orElse(null);
+    }
+    public boolean save(MemoEntity memo) {
+        if (memo.getTitle() == null || memo.getTitle().isBlank()) {
+            return false;
+        }
+        if (memo.getContent() == null || memo.getContent().isBlank()) {
+            return false;
+        }
+        memoRepository.save(memo);
+        return true;
+    }
+    public void deleteById(Long id) {
+        memoRepository.deleteById(id);
+    }
+    public List<MemoEntity> findAllOrderByTitleAsc() {
+        return memoRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
+    }
+    public Page<MemoEntity> findPage(int page, String sort) {
+        Sort sortOrder = sort.equals("desc")
+                ? Sort.by(Sort.Direction.DESC, "title")
+                : Sort.by(Sort.Direction.ASC, "title");
+        Pageable pageable = PageRequest.of(page, 5, sortOrder);
+        return memoRepository.findAll(pageable);
+    }
+    
+    public Page<MemoEntity> searchPage(int page, String sort, String keyword) {
+        Sort sortOrder = sort.equals("desc")
+                ? Sort.by(Sort.Direction.DESC, "title")
+                : Sort.by(Sort.Direction.ASC, "title");
+        Pageable pageable = PageRequest.of(page, 5, sortOrder);
+        return memoRepository.findByTitleContaining(keyword, pageable);
+    }
+
+
+    
+
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>メモアプリ</title>
+</head>
+
+<body>
+	<h1>メモアプリ</h1>
+	<h2>追加</h2>
+	<form action="/add" method="post">
+		<input type="text" name="title" placeholder="タイトル" required>
+		<textarea name="content" placeholder="内容" rows="3" required></textarea>
+		<button type="submit">追加</button>
+	</form>
+
+
+	<h2>検索</h2>
+	<form action="/search" method="get">
+		<input type="text" name="keyword" th:value="${keyword}">
+		<button type="submit">検索</button>
+	</form>
+
+	<h2>一覧</h2>
+	<ul>
+		<li th:each="memo : ${memos}">
+			<span th:text="${memo.title}"></span>
+			<span th:text="${memo.content}" style="white-space: pre-wrap;"></span>
+			<a th:href="@{/detail/{id}(id=${memo.id})}">詳細</a>
+			<a th:href="@{/delete/{id}(id=${memo.id})}">削除</a>
+			<a th:href="@{/edit/{id}(id=${memo.id})}">編集</a>
+		</li>
+	</ul>
+
+	<div>
+		<a th:href="@{/(page=0,sort='asc')}">昇順</a>
+		<a th:href="@{/(page=0,sort='desc')}">降順</a>
+	</div>
+	<div>
+		<a th:if="${currentPage > 0}" th:href="@{/search(keyword=${keyword},page=${currentPage-1},sort=${sort})}">前</a>
+		<span th:text="${currentPage + 1}"></span>
+		<a th:if="${currentPage + 1 < totalPages}"
+			th:href="@{/search(keyword=${keyword},page=${currentPage+1},sort=${sort})}">次</a>
+	</div>
+
+</body>
+
+</html>

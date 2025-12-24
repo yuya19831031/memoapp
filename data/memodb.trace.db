@@ -1,0 +1,9 @@
+2025-12-19 06:37:26.170739+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMO_ENTITY" not found (this database is empty); SQL statement:
+select me1_0.id,me1_0.content,me1_0.title from memo_entity me1_0 [42104-232]
+2025-12-19 06:37:52.007956+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMO_ENTITY" not found (this database is empty); SQL statement:
+select me1_0.id,me1_0.content,me1_0.title from memo_entity me1_0 [42104-232]
+2025-12-19 06:38:23.516232+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMO_ENTITY" not found (this database is empty); SQL statement:
+select me1_0.id,me1_0.content,me1_0.title from memo_entity me1_0 [42104-232]

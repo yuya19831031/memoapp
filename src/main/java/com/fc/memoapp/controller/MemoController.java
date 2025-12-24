@@ -1,0 +1,95 @@
+package com.fc.memoapp.controller;
+
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fc.memoapp.entity.MemoEntity;
+import com.fc.memoapp.service.MemoService;
+
+@Controller
+public class MemoController {
+
+    private final MemoService memoService;
+
+    public MemoController(MemoService memoService) {
+        this.memoService = memoService;
+    }
+
+    @GetMapping("/")
+    public String index(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort,
+            Model model) {
+
+        Page<MemoEntity> memoPage = memoService.findPage(page, sort);
+        model.addAttribute("memos", memoPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", memoPage.getTotalPages());
+        model.addAttribute("sort", sort);
+        return "index";
+    }
+
+
+    @PostMapping("/add")
+    public String add(MemoEntity memo, Model model) {
+        boolean result = memoService.save(memo);
+        if (!result) {
+            model.addAttribute("memos", memoService.findAll());
+            return "index";
+        }
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        memoService.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        MemoEntity memo = memoService.findById(id);
+        model.addAttribute("memo", memo);
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String editSubmit(MemoEntity memo) {
+        memoService.save(memo);
+        return "redirect:/";
+    }
+    
+    @GetMapping("/search")
+    public String search(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort,
+            Model model) {
+
+        Page<MemoEntity> memoPage = memoService.searchPage(page, sort, keyword);
+        model.addAttribute("memos", memoPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", memoPage.getTotalPages());
+        model.addAttribute("sort", sort);
+        model.addAttribute("keyword", keyword);
+        return "index";
+    }
+
+    @GetMapping("/sort/title")
+    public String sortByTitle(Model model) {
+        model.addAttribute("memos", memoService.findAllOrderByTitleAsc());
+        return "index";
+    }
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        MemoEntity memo = memoService.findById(id);
+        model.addAttribute("memo", memo);
+        return "detail";
+    }
+}
