@@ -110,10 +110,9 @@ public class MemoController {
     }
     
     @ExceptionHandler(MemoNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND) // 404エラーとして扱う
+    @ResponseStatus(HttpStatus.NOT_FOUND) 
     public String handleNotFoundException(MemoNotFoundException ex, Model model) {
-        // エラーメッセージを画面に渡す
         model.addAttribute("errorMessage", ex.getMessage());
-        return "error/404"; // errorフォルダの404.htmlを表示する
+        return "error/404"; 
     }
 }
