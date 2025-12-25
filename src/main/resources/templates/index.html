@@ -10,10 +10,14 @@
 	<h1>メモアプリ</h1>
 	<h2>追加</h2>
 	<form action="/add" method="post">
-		<input type="text" name="title" placeholder="タイトル" required>
-		<textarea name="content" placeholder="内容" rows="3" required></textarea>
-		<button type="submit">追加</button>
-	</form>
+    <input type="text" name="title" placeholder="タイトル" th:value="${memoEntity.title}">
+    <p th:if="${#fields.hasErrors('memoEntity.title')}" th:errors="${memoEntity.title}" style="color:red;"></p>
+
+    <textarea name="content" placeholder="内容" rows="3" th:text="${memoEntity.content}"></textarea>
+    <p th:if="${#fields.hasErrors('memoEntity.content')}" th:errors="${memoEntity.content}" style="color:red;"></p>
+
+    <button type="submit">追加</button>
+</form>
 
 
 	<h2>検索</h2>

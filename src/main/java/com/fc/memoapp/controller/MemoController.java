@@ -3,6 +3,8 @@ package com.fc.memoapp.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,7 @@ public class MemoController {
 
     @GetMapping("/")
     public String index(
+    		MemoEntity memoEntity,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "asc") String sort,
             Model model) {
@@ -36,12 +39,21 @@ public class MemoController {
 
 
     @PostMapping("/add")
-    public String add(MemoEntity memo, Model model) {
-        boolean result = memoService.save(memo);
-        if (!result) {
-            model.addAttribute("memos", memoService.findAll());
+    public String add(@Validated MemoEntity memoEntity, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            // エラー時に index 画面を表示するために必要なデータをすべて詰め直す
+            int defaultPage = 0;
+            String defaultSort = "asc";
+            Page<MemoEntity> memoPage = memoService.findPage(defaultPage, defaultSort);
+            
+            model.addAttribute("memos", memoPage.getContent());
+            model.addAttribute("currentPage", defaultPage);
+            model.addAttribute("totalPages", memoPage.getTotalPages());
+            model.addAttribute("sort", defaultSort);
+            
             return "index";
         }
+        memoService.save(memoEntity);
         return "redirect:/";
     }
 
