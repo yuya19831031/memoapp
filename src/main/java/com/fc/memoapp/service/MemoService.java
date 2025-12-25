@@ -1,7 +1,6 @@
 package com.fc.memoapp.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fc.memoapp.entity.MemoEntity;
+import com.fc.memoapp.exception.MemoNotFoundException;
 import com.fc.memoapp.repository.MemoRepository;
 
 @Service
@@ -22,8 +22,9 @@ public class MemoService {
         return memoRepository.findAll();
     }
     public MemoEntity findById(Long id) {
-        Optional<MemoEntity> optional = memoRepository.findById(id);
-        return optional.orElse(null);
+        return memoRepository.findById(id)
+            .orElseThrow(() -> 
+            new MemoNotFoundException("指定されたメモ（ID:" + id + "）は見つかりません。"));
     }
     public boolean save(MemoEntity memo) {
         if (memo.getTitle() == null || memo.getTitle().isBlank()) {

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Not Found</title>
+</head>
+<body>
+
+    <h1>ページが見つかりません</h1>
+    
+    <div class="message">
+        <p th:text="${errorMessage}">エラーが発生しました。</p>
+    </div>
+
+    <hr>
+    
+    <a href="/">メモ一覧に戻る</a>
+
+</body>
+</html>
