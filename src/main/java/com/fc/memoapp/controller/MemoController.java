@@ -13,26 +13,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.fc.memoapp.dto.MemoDto;
 import com.fc.memoapp.entity.MemoEntity;
 import com.fc.memoapp.exception.MemoNotFoundException;
 import com.fc.memoapp.service.MemoService;
 
 @Controller
 public class MemoController {
-
     private final MemoService memoService;
-
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }
-
     @GetMapping("/")
     public String index(
-    		MemoEntity memoEntity,
+            MemoDto memoDto,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "asc") String sort,
             Model model) {
-
         Page<MemoEntity> memoPage = memoService.findPage(page, sort);
         model.addAttribute("memos", memoPage.getContent());
         model.addAttribute("currentPage", page);
@@ -40,54 +37,48 @@ public class MemoController {
         model.addAttribute("sort", sort);
         return "index";
     }
-
-
     @PostMapping("/add")
-    public String add(@Validated MemoEntity memoEntity, BindingResult result, Model model) {
+    public String add(@Validated MemoDto memoDto, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            // エラー時に index 画面を表示するために必要なデータをすべて詰め直す
             int defaultPage = 0;
             String defaultSort = "asc";
             Page<MemoEntity> memoPage = memoService.findPage(defaultPage, defaultSort);
-            
             model.addAttribute("memos", memoPage.getContent());
             model.addAttribute("currentPage", defaultPage);
             model.addAttribute("totalPages", memoPage.getTotalPages());
             model.addAttribute("sort", defaultSort);
-            
             return "index";
         }
-        memoService.save(memoEntity);
+        memoService.save(memoDto);
         return "redirect:/";
     }
-
-
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         memoService.deleteById(id);
         return "redirect:/";
     }
-
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable Long id, Model model) {
-        MemoEntity memo = memoService.findById(id);
-        model.addAttribute("memo", memo);
+        MemoEntity memoEntity = memoService.findById(id);
+        MemoDto memoDto = new MemoDto();
+        memoDto.setId(memoEntity.getId());
+        memoDto.setTitle(memoEntity.getTitle());
+        memoDto.setContent(memoEntity.getContent());
+        model.addAttribute("memoDto", memoDto); // "memo"から"memoDto"に変更
         return "edit";
     }
-
     @PostMapping("/edit")
-    public String editSubmit(MemoEntity memo) {
-        memoService.save(memo);
+    public String editSubmit(MemoDto memoDto) {
+        memoService.save(memoDto);
         return "redirect:/";
     }
-    
     @GetMapping("/search")
     public String search(
+            MemoDto memoDto, 
             @RequestParam String keyword,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "asc") String sort,
             Model model) {
-
         Page<MemoEntity> memoPage = memoService.searchPage(page, sort, keyword);
         model.addAttribute("memos", memoPage.getContent());
         model.addAttribute("currentPage", page);
@@ -96,7 +87,6 @@ public class MemoController {
         model.addAttribute("keyword", keyword);
         return "index";
     }
-
     @GetMapping("/sort/title")
     public String sortByTitle(Model model) {
         model.addAttribute("memos", memoService.findAllOrderByTitleAsc());
@@ -108,7 +98,6 @@ public class MemoController {
         model.addAttribute("memo", memo);
         return "detail";
     }
-    
     @ExceptionHandler(MemoNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND) 
     public String handleNotFoundException(MemoNotFoundException ex, Model model) {

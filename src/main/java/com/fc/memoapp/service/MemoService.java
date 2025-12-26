@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.fc.memoapp.dto.MemoDto;
 import com.fc.memoapp.entity.MemoEntity;
 import com.fc.memoapp.exception.MemoNotFoundException;
 import com.fc.memoapp.repository.MemoRepository;
@@ -26,15 +27,12 @@ public class MemoService {
             .orElseThrow(() -> 
             new MemoNotFoundException("指定されたメモ（ID:" + id + "）は見つかりません。"));
     }
-    public boolean save(MemoEntity memo) {
-        if (memo.getTitle() == null || memo.getTitle().isBlank()) {
-            return false;
-        }
-        if (memo.getContent() == null || memo.getContent().isBlank()) {
-            return false;
-        }
+    public void save(MemoDto memoDto) {
+        MemoEntity memo = new MemoEntity();
+        memo.setId(memoDto.getId());
+        memo.setTitle(memoDto.getTitle());
+        memo.setContent(memoDto.getContent());
         memoRepository.save(memo);
-        return true;
     }
     public void deleteById(Long id) {
         memoRepository.deleteById(id);
