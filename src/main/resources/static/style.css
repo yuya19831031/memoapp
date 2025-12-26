@@ -1,0 +1,130 @@
+/* --- 全体のレイアウト --- */
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* --- 入力フォーム --- */
+form:not(li form) { /* リスト内の削除フォーム以外のフォーム */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 基本ボタン（追加・更新） */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* --- メモ一覧（カード形式） --- */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin-bottom: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;       /* 横並び */
+    align-items: center; /* 垂直中央 */
+}
+
+/* 1番目の要素：タイトル (20%) */
+li > *:nth-child(1) {
+    flex: 0 0 20%;
+    font-weight: bold;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 2番目の要素：内容 (60%) */
+li > *:nth-child(2) {
+    flex: 0 0 60%;
+    padding: 0 15px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 3番目以降の要素：リンク・ボタン（残り20%で右寄せ） */
+/* aタグとフォームを右端に寄せるための指定 */
+li > a, li > form {
+    margin-left: auto; /* 最初に見つかったアクション要素を右に押し出す */
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* 2つ目以降のリンクやボタンの間隔 */
+li > a + a, 
+li > a + form, 
+li > form + a {
+    margin-left: 15px;
+}
+
+/* --- リスト内アクション（リンク・削除ボタン） --- */
+li a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 0.9em;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+/* 削除ボタン（背景なし・テキストのみ） */
+li form {
+    display: inline;
+}
+
+li form button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    padding: 0;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+li form button:hover {
+    text-decoration: underline;
+    color: #c0392b;
+}
