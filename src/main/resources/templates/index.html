@@ -23,6 +23,7 @@
 	<form action="/search" method="get">
 		<input type="text" name="keyword" th:value="${keyword}">
 		<button type="submit">検索</button>
+		<a th:href="@{/}" class="btn-clear">クリア</a>
 	</form>
 
 	<h2>一覧</h2>

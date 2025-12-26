@@ -128,3 +128,44 @@ li form button:hover {
     text-decoration: underline;
     color: #c0392b;
 }
+
+
+/* 検索フォーム専用のスタイル（入力フォームと区別） */
+form[method="get"] {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 要素間の隙間 */
+    padding: 15px; /* 検索窓は少しスリムに */
+}
+
+/* 検索窓の幅を調整 */
+form[method="get"] input[type="text"] {
+    flex: 1; /* 残りの幅を埋める */
+    margin: 0;
+}
+
+/* 検索ボタン */
+form[method="get"] button {
+    white-space: nowrap;
+    background-color: #6c757d; /* 検索は少し落ち着いた色に */
+}
+
+/* クリアボタン（見た目はボタン、中身はリンク） */
+.btn-clear {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    border: 1px solid #ced4da;
+    transition: background 0.2s;
+}
+
+.btn-clear:hover {
+    background-color: #dee2e6;
+    color: #212529;
+    text-decoration: none;
+}
