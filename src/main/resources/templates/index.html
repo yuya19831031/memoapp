@@ -12,9 +12,9 @@
 	<h2>追加</h2>
 	<form th:action="@{/add}" th:object="${memoDto}" method="post">
 		<input type="text" th:field="*{title}" placeholder="タイトル">
-		<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></p>
+		<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" ></p>
 		<textarea th:field="*{content}" placeholder="内容" rows="3"></textarea>
-		<p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red;"></p>
+		<p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
 		<button type="submit">追加</button>
 	</form>
 

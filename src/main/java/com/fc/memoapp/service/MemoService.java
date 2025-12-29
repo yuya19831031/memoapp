@@ -1,7 +1,5 @@
 package com.fc.memoapp.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,11 +25,12 @@ public class MemoService {
     }
     
     public void deleteById(Long id) {
+        if (!memoRepository.existsById(id)) {
+            throw new MemoNotFoundException("削除対象のメモが見つかりません。");
+        }
         memoRepository.deleteById(id);
     }
-    public List<MemoEntity> findAllOrderByTitleAsc() {
-        return memoRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
-    }
+
     public Page<MemoEntity> findPage(int page, String sort) {
         Sort sortOrder = sort.equals("desc")
                 ? Sort.by(Sort.Direction.DESC, "title")

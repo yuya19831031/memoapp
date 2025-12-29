@@ -169,3 +169,45 @@ form[method="get"] button {
     color: #212529;
     text-decoration: none;
 }
+
+/* --- 詳細画面（タグ指定のみ） --- */
+
+/* タイトル */
+body > h1 {
+    margin-bottom: 20px;
+}
+
+/* 詳細ブロック全体をカード風に */
+body > p,
+body > pre {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+/* 「タイトル：」「内容：」のラベル */
+p > strong {
+    color: #555;
+}
+
+/* 内容表示 */
+pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* 下部リンク */
+body > a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.9em;
+}
+
+body > a:hover {
+    text-decoration: underline;
+}

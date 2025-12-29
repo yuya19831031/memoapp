@@ -6,35 +6,24 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
+
     <h1>メモ編集</h1>
 
-    <div style="margin-bottom: 20px; font-size: 0.9em; color: #666;">
-        <div>作成日：
-            <span th:with="cDate=${memoEntity.createdAt}"
-                  th:text="${cDate != null 
-                            ? #temporals.format(cDate, 'yyyy/MM/dd HH:mm') 
-                            : '---'}"></span>
-        </div>
-        <div>最終更新：
-            <span th:with="uDate=${memoEntity.updatedAt}"
-                  th:text="${uDate != null 
-                            ? #temporals.format(uDate, 'yyyy/MM/dd HH:mm') 
-                            : '---'}"></span>
-        </div>
-    </div>
-
-    <form th:action="@{/edit/{id}(id=${memoEntity.id})}" 
-          th:object="${memoDto}" 
+    <form th:action="@{/edit/{id}(id=${memoEntity.id})}"
+          th:object="${memoDto}"
           method="post">
-        
+
         <input type="text" th:field="*{title}" placeholder="タイトル">
-        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></p>
+        <p th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}" style="color:red;"></p>
 
         <textarea th:field="*{content}" placeholder="内容" rows="5"></textarea>
-        <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red;"></p>
+        <p th:if="${#fields.hasErrors('content')}"
+           th:errors="*{content}" style="color:red;"></p>
 
         <button type="submit">更新</button>
         <a th:href="@{/}">キャンセル</a>
     </form>
+
 </body>
 </html>

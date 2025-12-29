@@ -452,3 +452,309 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 2025-12-30T07:03:11.773+09:00  INFO 77700 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-12-30T07:03:11.774+09:00  INFO 77700 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2025-12-30T07:03:23.708+09:00  INFO 77700 --- [memoapp] [http-nio-8086-exec-2] c.fc.memoapp.controller.MemoController   : メモを追加しました title=l, contentLength=4
+2025-12-30T07:06:25.004+09:00  INFO 77700 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:06:25.036+09:00  INFO 77700 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:06:25.048+09:00  INFO 77700 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:06:25.067+09:00  INFO 77700 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:06:25.083+09:00  INFO 77700 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:06:26.386+09:00  INFO 77763 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 77763 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:06:26.388+09:00  INFO 77763 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:06:26.773+09:00  INFO 77763 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:06:26.806+09:00  INFO 77763 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2025-12-30T07:06:27.142+09:00  INFO 77763 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:06:27.151+09:00  INFO 77763 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:06:27.151+09:00  INFO 77763 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:06:27.182+09:00  INFO 77763 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:06:27.182+09:00  INFO 77763 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 763 ms
+2025-12-30T07:06:27.283+09:00  INFO 77763 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:06:27.317+09:00  INFO 77763 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:06:27.338+09:00  INFO 77763 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:06:27.520+09:00  INFO 77763 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:06:27.540+09:00  INFO 77763 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:06:27.688+09:00  INFO 77763 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:06:27.689+09:00  INFO 77763 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:06:27.729+09:00  INFO 77763 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:06:28.230+09:00  INFO 77763 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:06:28.262+09:00  INFO 77763 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:06:28.449+09:00  WARN 77763 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:06:28.462+09:00  INFO 77763 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:06:28.640+09:00  INFO 77763 --- [memoapp] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/memodb'
+2025-12-30T07:06:28.694+09:00  INFO 77763 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:06:28.701+09:00  INFO 77763 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.578 seconds (process running for 2.882)
+2025-12-30T07:06:31.283+09:00  INFO 77763 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:06:31.283+09:00  INFO 77763 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:06:31.284+09:00  INFO 77763 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30T07:11:04.733+09:00  INFO 77763 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:11:04.768+09:00  INFO 77763 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:11:04.785+09:00  INFO 77763 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:11:04.804+09:00  INFO 77763 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:11:04.820+09:00  INFO 77763 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:11:06.113+09:00  INFO 77850 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 77850 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:11:06.115+09:00  INFO 77850 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:11:06.507+09:00  INFO 77850 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:11:06.551+09:00  INFO 77850 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interface.
+2025-12-30T07:11:06.879+09:00  INFO 77850 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:11:06.888+09:00  INFO 77850 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:11:06.888+09:00  INFO 77850 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:11:06.917+09:00  INFO 77850 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:11:06.917+09:00  INFO 77850 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 772 ms
+2025-12-30T07:11:07.011+09:00  INFO 77850 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:11:07.044+09:00  INFO 77850 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:11:07.066+09:00  INFO 77850 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:11:07.243+09:00  INFO 77850 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:11:07.264+09:00  INFO 77850 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:11:07.419+09:00  INFO 77850 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:11:07.421+09:00  INFO 77850 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:11:07.462+09:00  INFO 77850 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:11:07.971+09:00  INFO 77850 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:11:08.005+09:00  INFO 77850 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:11:08.191+09:00  WARN 77850 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:11:08.205+09:00  INFO 77850 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:11:08.427+09:00  INFO 77850 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:11:08.433+09:00  INFO 77850 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.585 seconds (process running for 2.888)
+2025-12-30T07:11:10.647+09:00  INFO 77850 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:11:10.648+09:00  INFO 77850 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:11:10.650+09:00  INFO 77850 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-12-30T07:11:19.385+09:00  INFO 77850 --- [memoapp] [http-nio-8086-exec-3] c.fc.memoapp.controller.MemoController   : メモを追加しました title=t, contentLength=5
+2025-12-30T07:16:09.295+09:00  INFO 77850 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:16:09.322+09:00  INFO 77850 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:16:09.340+09:00  INFO 77850 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:16:09.360+09:00  INFO 77850 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:16:09.379+09:00  INFO 77850 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:16:10.547+09:00  INFO 78004 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78004 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:16:10.549+09:00  INFO 78004 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:16:10.941+09:00  INFO 78004 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:16:10.981+09:00  INFO 78004 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interface.
+2025-12-30T07:16:11.328+09:00  INFO 78004 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:16:11.337+09:00  INFO 78004 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:16:11.337+09:00  INFO 78004 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:16:11.367+09:00  INFO 78004 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:16:11.367+09:00  INFO 78004 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 786 ms
+2025-12-30T07:16:11.464+09:00  INFO 78004 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:16:11.498+09:00  INFO 78004 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:16:11.520+09:00  INFO 78004 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:16:11.700+09:00  INFO 78004 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:16:11.721+09:00  INFO 78004 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:16:11.868+09:00  INFO 78004 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:16:11.869+09:00  INFO 78004 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:16:11.910+09:00  INFO 78004 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:16:12.404+09:00  INFO 78004 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:16:12.437+09:00  INFO 78004 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:16:12.630+09:00  WARN 78004 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:16:12.645+09:00  INFO 78004 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:16:12.869+09:00  INFO 78004 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:16:12.875+09:00  INFO 78004 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.592 seconds (process running for 2.895)
+2025-12-30T07:16:15.307+09:00  INFO 78004 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:16:15.307+09:00  INFO 78004 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:16:15.308+09:00  INFO 78004 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-12-30T07:16:47.664+09:00  INFO 78004 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:16:47.670+09:00  INFO 78004 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:16:47.685+09:00  INFO 78004 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:16:47.704+09:00  INFO 78004 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:16:47.723+09:00  INFO 78004 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:16:48.905+09:00  INFO 78023 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78023 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:16:48.907+09:00  INFO 78023 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:16:49.248+09:00  INFO 78023 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:16:49.290+09:00  INFO 78023 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interface.
+2025-12-30T07:16:49.578+09:00  INFO 78023 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:16:49.585+09:00  INFO 78023 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:16:49.585+09:00  INFO 78023 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:16:49.609+09:00  INFO 78023 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:16:49.610+09:00  INFO 78023 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 674 ms
+2025-12-30T07:16:49.688+09:00  INFO 78023 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:16:49.713+09:00  INFO 78023 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:16:49.730+09:00  INFO 78023 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:16:49.868+09:00  INFO 78023 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:16:49.884+09:00  INFO 78023 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:16:50.005+09:00  INFO 78023 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:16:50.006+09:00  INFO 78023 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:16:50.069+09:00  INFO 78023 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:16:50.531+09:00  INFO 78023 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:16:50.562+09:00  INFO 78023 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:16:50.734+09:00  WARN 78023 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:16:50.747+09:00  INFO 78023 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:16:50.945+09:00  INFO 78023 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:16:50.951+09:00  INFO 78023 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.284 seconds (process running for 2.561)
+2025-12-30T07:16:53.031+09:00  INFO 78023 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:16:53.031+09:00  INFO 78023 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:16:53.032+09:00  INFO 78023 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30T07:18:27.244+09:00  INFO 78023 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:18:27.251+09:00  INFO 78023 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:18:27.266+09:00  INFO 78023 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:18:27.287+09:00  INFO 78023 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:18:27.288+09:00  INFO 78023 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:18:28.573+09:00  INFO 78066 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78066 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:18:28.575+09:00  INFO 78066 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:18:28.940+09:00  INFO 78066 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:18:28.977+09:00  INFO 78066 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 1 JPA repository interface.
+2025-12-30T07:18:29.288+09:00  INFO 78066 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:18:29.295+09:00  INFO 78066 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:18:29.296+09:00  INFO 78066 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:18:29.321+09:00  INFO 78066 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:18:29.321+09:00  INFO 78066 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 716 ms
+2025-12-30T07:18:29.410+09:00  INFO 78066 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:18:29.440+09:00  INFO 78066 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:18:29.459+09:00  INFO 78066 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:18:29.618+09:00  INFO 78066 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:18:29.635+09:00  INFO 78066 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:18:29.769+09:00  INFO 78066 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:18:29.771+09:00  INFO 78066 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:18:29.807+09:00  INFO 78066 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:18:30.272+09:00  INFO 78066 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:18:30.300+09:00  INFO 78066 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:18:30.475+09:00  WARN 78066 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:18:30.488+09:00  INFO 78066 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:18:30.719+09:00  INFO 78066 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:18:30.726+09:00  INFO 78066 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.401 seconds (process running for 2.697)
+2025-12-30T07:18:33.102+09:00  INFO 78066 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:18:33.102+09:00  INFO 78066 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:18:33.103+09:00  INFO 78066 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30T07:23:03.545+09:00  INFO 78066 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:23:03.553+09:00  INFO 78066 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:23:03.570+09:00  INFO 78066 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:23:03.590+09:00  INFO 78066 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:23:03.610+09:00  INFO 78066 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:23:04.936+09:00  INFO 78181 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78181 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:23:04.938+09:00  INFO 78181 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:23:05.294+09:00  INFO 78181 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:23:05.330+09:00  INFO 78181 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 1 JPA repository interface.
+2025-12-30T07:23:05.638+09:00  INFO 78181 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:23:05.645+09:00  INFO 78181 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:23:05.646+09:00  INFO 78181 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:23:05.673+09:00  INFO 78181 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:23:05.673+09:00  INFO 78181 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 707 ms
+2025-12-30T07:23:05.768+09:00  INFO 78181 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:23:05.798+09:00  INFO 78181 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:23:05.818+09:00  INFO 78181 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:23:05.984+09:00  INFO 78181 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:23:06.002+09:00  INFO 78181 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:23:06.125+09:00  INFO 78181 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:23:06.126+09:00  INFO 78181 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:23:06.161+09:00  INFO 78181 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:23:06.623+09:00  INFO 78181 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:23:06.651+09:00  INFO 78181 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:23:06.821+09:00  WARN 78181 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:23:06.834+09:00  INFO 78181 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:23:07.039+09:00  INFO 78181 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:23:07.045+09:00  INFO 78181 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.351 seconds (process running for 2.641)
+2025-12-30T07:23:08.674+09:00  INFO 78181 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:23:08.674+09:00  INFO 78181 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:23:08.675+09:00  INFO 78181 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30T07:23:19.995+09:00  INFO 78181 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:23:20.004+09:00  INFO 78181 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:23:20.039+09:00  INFO 78181 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:23:20.040+09:00  INFO 78181 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:23:20.063+09:00  INFO 78181 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:23:21.396+09:00  INFO 78189 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78189 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:23:21.397+09:00  INFO 78189 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:23:21.777+09:00  INFO 78189 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:23:21.809+09:00  INFO 78189 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2025-12-30T07:23:22.126+09:00  INFO 78189 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:23:22.133+09:00  INFO 78189 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:23:22.133+09:00  INFO 78189 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:23:22.158+09:00  INFO 78189 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:23:22.159+09:00  INFO 78189 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 733 ms
+2025-12-30T07:23:22.257+09:00  INFO 78189 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:23:22.289+09:00  INFO 78189 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:23:22.309+09:00  INFO 78189 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:23:22.489+09:00  INFO 78189 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:23:22.506+09:00  INFO 78189 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:23:22.632+09:00  INFO 78189 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:23:22.633+09:00  INFO 78189 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:23:22.670+09:00  INFO 78189 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:23:23.151+09:00  INFO 78189 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:23:23.180+09:00  INFO 78189 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:23:23.366+09:00  WARN 78189 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:23:23.380+09:00  INFO 78189 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:23:23.597+09:00  INFO 78189 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:23:23.603+09:00  INFO 78189 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.454 seconds (process running for 2.835)
+2025-12-30T07:23:26.065+09:00  INFO 78189 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:23:26.065+09:00  INFO 78189 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:23:26.066+09:00  INFO 78189 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-30T07:32:00.728+09:00  INFO 78189 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-30T07:32:00.759+09:00  INFO 78189 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-30T07:32:00.776+09:00  INFO 78189 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:32:00.794+09:00  INFO 78189 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-30T07:32:00.812+09:00  INFO 78189 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-30T07:32:02.131+09:00  INFO 78455 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Starting MemoappApplication using Java 17.0.6 with PID 78455 (/Users/yuyakim/Downloads/memoapp/target/classes started by yuyakim in /Users/yuyakim/Downloads/memoapp)
+2025-12-30T07:32:02.133+09:00  INFO 78455 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T07:32:02.484+09:00  INFO 78455 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T07:32:02.520+09:00  INFO 78455 --- [memoapp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 1 JPA repository interface.
+2025-12-30T07:32:02.833+09:00  INFO 78455 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-12-30T07:32:02.841+09:00  INFO 78455 --- [memoapp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T07:32:02.841+09:00  INFO 78455 --- [memoapp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2025-12-30T07:32:02.866+09:00  INFO 78455 --- [memoapp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T07:32:02.867+09:00  INFO 78455 --- [memoapp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 706 ms
+2025-12-30T07:32:02.957+09:00  INFO 78455 --- [memoapp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T07:32:02.987+09:00  INFO 78455 --- [memoapp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.39.Final
+2025-12-30T07:32:03.006+09:00  INFO 78455 --- [memoapp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T07:32:03.167+09:00  INFO 78455 --- [memoapp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T07:32:03.184+09:00  INFO 78455 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T07:32:03.313+09:00  INFO 78455 --- [memoapp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/memodb user=SA
+2025-12-30T07:32:03.314+09:00  INFO 78455 --- [memoapp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T07:32:03.351+09:00  INFO 78455 --- [memoapp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-30T07:32:03.818+09:00  INFO 78455 --- [memoapp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T07:32:03.847+09:00  INFO 78455 --- [memoapp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T07:32:04.019+09:00  WARN 78455 --- [memoapp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-30T07:32:04.032+09:00  INFO 78455 --- [memoapp] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-12-30T07:32:04.240+09:00  INFO 78455 --- [memoapp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2025-12-30T07:32:04.246+09:00  INFO 78455 --- [memoapp] [main] com.fc.memoapp.MemoappApplication        : Started MemoappApplication in 2.367 seconds (process running for 2.679)
+2025-12-30T07:32:21.644+09:00  INFO 78455 --- [memoapp] [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T07:32:21.645+09:00  INFO 78455 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T07:32:21.646+09:00  INFO 78455 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

@@ -22,116 +22,138 @@ import com.fc.memoapp.service.MemoService;
 
 @Controller
 public class MemoController {
-	private static final Logger logger = LoggerFactory.getLogger(MemoController.class);
 
-	private final MemoService memoService;
+    private static final Logger logger =
+            LoggerFactory.getLogger(MemoController.class);
 
-	public MemoController(MemoService memoService) {
-		this.memoService = memoService;
-	}
+    private final MemoService memoService;
 
-	@GetMapping("/")
-	public String index(
-			MemoDto memoDto,
-			@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "asc") String sort,
-			Model model) {
-		Page<MemoEntity> memoPage = memoService.findPage(page, sort);
-		model.addAttribute("memos", memoPage.getContent());
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", memoPage.getTotalPages());
-		model.addAttribute("sort", sort);
-		return "index";
-	}
+    public MemoController(MemoService memoService) {
+        this.memoService = memoService;
+    }
 
-	@PostMapping("/add")
-	public String add(@Validated MemoDto memoDto, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			int defaultPage = 0;
-			String defaultSort = "asc";
-			Page<MemoEntity> memoPage = memoService.findPage(defaultPage, defaultSort);
-			model.addAttribute("memos", memoPage.getContent());
-			model.addAttribute("currentPage", defaultPage);
-			model.addAttribute("totalPages", memoPage.getTotalPages());
-			model.addAttribute("sort", defaultSort);
-			return "index";
-		}
-		memoService.create(memoDto);
-		logger.info(
-				"メモを追加しました title={}, contentLength={}",
-				memoDto.getTitle(),
-				memoDto.getContent().length());
-		return "redirect:/";
-	}
+    /* 一覧 */
+    @GetMapping("/")
+    public String index(
+            MemoDto memoDto,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort,
+            Model model) {
 
-	@PostMapping("/delete/{id}")
-	public String delete(@PathVariable Long id) {
-	    memoService.deleteById(id);
-	    return "redirect:/";
-	}
-	
-	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable Long id, Model model) {
-	    MemoEntity entity = memoService.findById(id);
-	    model.addAttribute("memoDto", entity);
-	    model.addAttribute("memoEntity", entity);
-	    return "edit";
-	}
+        Page<MemoEntity> memoPage = memoService.findPage(page, sort);
+        model.addAttribute("memos", memoPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", memoPage.getTotalPages());
+        model.addAttribute("sort", sort);
+        return "index";
+    }
 
+    /* 追加 */
+    @PostMapping("/add")
+    public String add(
+            @Validated MemoDto memoDto,
+            BindingResult result,
+            Model model) {
 
-	@PostMapping("/edit/{id}")
-	public String editSubmit(
-	        @PathVariable Long id,
-	        @Validated MemoDto memoDto,
-	        BindingResult result,
-	        Model model) {
+        if (result.hasErrors()) {
+            Page<MemoEntity> memoPage = memoService.findPage(0, "asc");
+            model.addAttribute("memos", memoPage.getContent());
+            model.addAttribute("currentPage", 0);
+            model.addAttribute("totalPages", memoPage.getTotalPages());
+            model.addAttribute("sort", "asc");
+            return "index";
+        }
 
-	    if (result.hasErrors()) {
-	        MemoEntity entity = memoService.findById(id);
-	        model.addAttribute("memoEntity", entity);
-	        return "edit";
-	    }
+        memoService.create(memoDto);
 
-	    memoDto.setId(id);
-	    memoService.update(memoDto);
-	    return "redirect:/";
-	}
+        logger.info(
+                "メモを追加しました title={}, contentLength={}",
+                memoDto.getTitle(),
+                memoDto.getContent().length());
 
+        return "redirect:/";
+    }
 
-	@GetMapping("/search")
-	public String search(
-			MemoDto memoDto,
-			@RequestParam String keyword,
-			@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "asc") String sort,
-			Model model) {
-		Page<MemoEntity> memoPage = memoService.searchPage(page, sort, keyword);
-		model.addAttribute("memos", memoPage.getContent());
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", memoPage.getTotalPages());
-		model.addAttribute("sort", sort);
-		model.addAttribute("keyword", keyword);
-		return "index";
-	}
+    /* 削除 */
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        memoService.deleteById(id);
+        return "redirect:/";
+    }
 
-	@GetMapping("/sort/title")
-	public String sortByTitle(Model model) {
-		model.addAttribute("memos", memoService.findAllOrderByTitleAsc());
-		return "index";
-	}
+    /* 編集画面表示 */
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id, Model model) {
 
-	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable Long id, Model model) {
-		MemoEntity memo = memoService.findById(id);
-		model.addAttribute("memo", memo);
-		return "detail";
-	}
+        MemoEntity entity = memoService.findById(id);
 
-	@ExceptionHandler(MemoNotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String handleNotFoundException(MemoNotFoundException ex, Model model) {
-		logger.error("メモが見つかりません message={}", ex.getMessage());
-		model.addAttribute("errorMessage", ex.getMessage());
-		return "error/404";
-	}
+        // Entity → DTO へ明示的に詰め替え
+        MemoDto dto = new MemoDto();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setContent(entity.getContent());
+
+        model.addAttribute("memoDto", dto);       // フォーム用
+        model.addAttribute("memoEntity", entity); // 表示専用
+        return "edit";
+    }
+
+    /* 編集確定 */
+    @PostMapping("/edit/{id}")
+    public String editSubmit(
+            @PathVariable Long id,
+            @Validated MemoDto memoDto,
+            BindingResult result,
+            Model model) {
+
+        if (result.hasErrors()) {
+            MemoEntity entity = memoService.findById(id);
+            model.addAttribute("memoEntity", entity);
+            return "edit";
+        }
+
+        memoDto.setId(id);
+        memoService.update(memoDto);
+        return "redirect:/";
+    }
+
+    /* 検索 */
+    @GetMapping("/search")
+    public String search(
+            MemoDto memoDto,
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort,
+            Model model) {
+
+        Page<MemoEntity> memoPage =
+                memoService.searchPage(page, sort, keyword);
+
+        model.addAttribute("memos", memoPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", memoPage.getTotalPages());
+        model.addAttribute("sort", sort);
+        model.addAttribute("keyword", keyword);
+        return "index";
+    }
+
+    /* 詳細 */
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        MemoEntity memo = memoService.findById(id);
+        model.addAttribute("memo", memo);
+        return "detail";
+    }
+
+    /* 404 */
+    @ExceptionHandler(MemoNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleNotFoundException(
+            MemoNotFoundException ex,
+            Model model) {
+
+        logger.error("メモが見つかりません message={}", ex.getMessage());
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "error/404";
+    }
 }
