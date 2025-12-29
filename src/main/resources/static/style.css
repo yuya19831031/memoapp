@@ -3,7 +3,7 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 800px;
+    max-width: 80%;
     margin: 40px auto;
     padding: 20px;
     background-color: #f8f9fa;
@@ -84,12 +84,17 @@ li > *:nth-child(2) {
     text-overflow: ellipsis;
 }
 
+li > span:last-child {
+	width: 300px;
+}
+
 /* 3番目以降の要素：リンク・ボタン（残り20%で右寄せ） */
 /* aタグとフォームを右端に寄せるための指定 */
 li > a, li > form {
     margin-left: auto; /* 最初に見つかったアクション要素を右に押し出す */
     flex: 0 0 auto;
     white-space: nowrap;
+    color:#0056b3;
 }
 
 /* 2つ目以降のリンクやボタンの間隔 */
