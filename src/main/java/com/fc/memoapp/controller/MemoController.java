@@ -71,14 +71,11 @@ public class MemoController {
 	}
 
 	@GetMapping("/edit/{id}")
-	public String editForm(@PathVariable Long id, Model model) {
-		MemoEntity memoEntity = memoService.findById(id);
-		MemoDto memoDto = new MemoDto();
-		memoDto.setId(memoEntity.getId());
-		memoDto.setTitle(memoEntity.getTitle());
-		memoDto.setContent(memoEntity.getContent());
-		model.addAttribute("memoDto", memoDto); // "memo"から"memoDto"に変更
-		return "edit";
+	public String edit(@PathVariable Long id, Model model) {
+	    MemoEntity entity = memoService.findById(id); // DBから取得
+	    model.addAttribute("memoDto", entity); 
+	    model.addAttribute("memoEntity", entity); 
+	    return "edit";
 	}
 
 	@PostMapping("/edit")
