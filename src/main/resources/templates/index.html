@@ -9,14 +9,14 @@
 
 <body>
 	<h1>メモアプリ</h1>
-<h2>追加</h2>
-    <form th:action="@{/add}" th:object="${memoDto}" method="post">
-        <input type="text" th:field="*{title}" placeholder="タイトル">
-        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></p>
-        <textarea th:field="*{content}" placeholder="内容" rows="3"></textarea>
-        <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red;"></p>
-        <button type="submit">追加</button>
-    </form>
+	<h2>追加</h2>
+	<form th:action="@{/add}" th:object="${memoDto}" method="post">
+		<input type="text" th:field="*{title}" placeholder="タイトル">
+		<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></p>
+		<textarea th:field="*{content}" placeholder="内容" rows="3"></textarea>
+		<p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red;"></p>
+		<button type="submit">追加</button>
+	</form>
 
 
 	<h2>検索</h2>
@@ -30,6 +30,10 @@
 	<ul>
 		<li th:each="memo : ${memos}">
 			<span th:text="${memo.title}"></span>
+			<span style="color: #666; margin-left: 10px;">
+				（更新日：<span
+					th:text="${memo.updatedAt != null ? #temporals.format(memo.updatedAt, 'yyyy/MM/dd HH:mm') : '未設定'}"></span>）
+			</span>
 			<span th:text="${memo.content}" style="white-space: pre-wrap;"></span>
 			<a th:href="@{/detail/{id}(id=${memo.id})}">詳細</a>
 			<a th:href="@{/delete/{id}(id=${memo.id})}">削除</a>

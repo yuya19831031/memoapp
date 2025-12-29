@@ -76,7 +76,7 @@ li > *:nth-child(1) {
 
 /* 2番目の要素：内容 (60%) */
 li > *:nth-child(2) {
-    flex: 0 0 60%;
+    flex: 0 0 20%;
     padding: 0 15px;
     color: #666;
     white-space: nowrap;
