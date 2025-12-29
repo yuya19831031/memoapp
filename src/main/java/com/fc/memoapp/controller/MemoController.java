@@ -56,7 +56,7 @@ public class MemoController {
 			model.addAttribute("sort", defaultSort);
 			return "index";
 		}
-		memoService.save(memoDto);
+		memoService.create(memoDto);
 		logger.info(
 				"メモを追加しました title={}, contentLength={}",
 				memoDto.getTitle(),
@@ -64,25 +64,39 @@ public class MemoController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/delete/{id}")
+	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable Long id) {
-		memoService.deleteById(id);
-		return "redirect:/";
+	    memoService.deleteById(id);
+	    return "redirect:/";
 	}
-
+	
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable Long id, Model model) {
-	    MemoEntity entity = memoService.findById(id); // DBから取得
-	    model.addAttribute("memoDto", entity); 
-	    model.addAttribute("memoEntity", entity); 
+	    MemoEntity entity = memoService.findById(id);
+	    model.addAttribute("memoDto", entity);
+	    model.addAttribute("memoEntity", entity);
 	    return "edit";
 	}
 
-	@PostMapping("/edit")
-	public String editSubmit(MemoDto memoDto) {
-		memoService.save(memoDto);
-		return "redirect:/";
+
+	@PostMapping("/edit/{id}")
+	public String editSubmit(
+	        @PathVariable Long id,
+	        @Validated MemoDto memoDto,
+	        BindingResult result,
+	        Model model) {
+
+	    if (result.hasErrors()) {
+	        MemoEntity entity = memoService.findById(id);
+	        model.addAttribute("memoEntity", entity);
+	        return "edit";
+	    }
+
+	    memoDto.setId(id);
+	    memoService.update(memoDto);
+	    return "redirect:/";
 	}
+
 
 	@GetMapping("/search")
 	public String search(

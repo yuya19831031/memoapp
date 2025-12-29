@@ -36,7 +36,10 @@
 			</span>
 			<span th:text="${memo.content}" style="white-space: pre-wrap;"></span>
 			<a th:href="@{/detail/{id}(id=${memo.id})}">詳細</a>
-			<a th:href="@{/delete/{id}(id=${memo.id})}">削除</a>
+			<form th:action="@{/delete/{id}(id=${memo.id})}" method="post" onsubmit="return confirm('本当に削除しますか？');">
+				<button type="submit">削除</button>
+			</form>
+
 			<a th:href="@{/edit/{id}(id=${memo.id})}">編集</a>
 		</li>
 	</ul>
