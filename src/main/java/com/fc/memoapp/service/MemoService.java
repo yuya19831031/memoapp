@@ -15,50 +15,67 @@ import com.fc.memoapp.repository.MemoRepository;
 public class MemoService {
 
     private final MemoRepository memoRepository;
+
     public MemoService(MemoRepository memoRepository) {
         this.memoRepository = memoRepository;
     }
+
+    /* ID指定で1件取得 */
     public MemoEntity findById(Long id) {
         return memoRepository.findById(id)
-            .orElseThrow(() -> 
-            new MemoNotFoundException("指定されたメモ（ID:" + id + "）は見つかりません。"));
-    }
-    
-    public void deleteById(Long id) {
-        if (!memoRepository.existsById(id)) {
-            throw new MemoNotFoundException("削除対象のメモが見つかりません。");
-        }
-        memoRepository.deleteById(id);
+                .orElseThrow(() ->
+                        new MemoNotFoundException(
+                                "指定されたメモ（ID:" + id + "）は見つかりません。"));
     }
 
+    /* 一覧取得（ページ・並び順付き） */
     public Page<MemoEntity> findPage(int page, String sort) {
-        Sort sortOrder = sort.equals("desc")
-                ? Sort.by(Sort.Direction.DESC, "title")
-                : Sort.by(Sort.Direction.ASC, "title");
+        Sort sortOrder =
+                sort.equals("desc")
+                        ? Sort.by(Sort.Direction.DESC, "title")
+                        : Sort.by(Sort.Direction.ASC, "title");
+
         Pageable pageable = PageRequest.of(page, 5, sortOrder);
         return memoRepository.findAll(pageable);
     }
-    
+
+    /* 検索一覧取得 */
     public Page<MemoEntity> searchPage(int page, String sort, String keyword) {
-        Sort sortOrder = sort.equals("desc")
-                ? Sort.by(Sort.Direction.DESC, "title")
-                : Sort.by(Sort.Direction.ASC, "title");
+        Sort sortOrder =
+                sort.equals("desc")
+                        ? Sort.by(Sort.Direction.DESC, "title")
+                        : Sort.by(Sort.Direction.ASC, "title");
+
         Pageable pageable = PageRequest.of(page, 5, sortOrder);
         return memoRepository.findByTitleContaining(keyword, pageable);
     }
-    
-    public void update(MemoDto memoDto) {
-        MemoEntity memo = findById(memoDto.getId());
-        memo.setTitle(memoDto.getTitle());
-        memo.setContent(memoDto.getContent());
+
+    /* 新規作成 */
+    public void create(MemoDto memoDto) {
+        MemoEntity memo =
+                new MemoEntity(
+                        memoDto.getTitle(),
+                        memoDto.getContent());
+
         memoRepository.save(memo);
     }
-    
-    public void create(MemoDto memoDto) {
-        MemoEntity memo = new MemoEntity(
-                memoDto.getTitle(),
-                memoDto.getContent()
-        );
+
+    /* 更新 */
+    public void update(MemoDto memoDto) {
+        MemoEntity memo = findById(memoDto.getId());
+
+        memo.setTitle(memoDto.getTitle());
+        memo.setContent(memoDto.getContent());
+
         memoRepository.save(memo);
+    }
+
+    /* 削除 */
+    public void deleteById(Long id) {
+        if (!memoRepository.existsById(id)) {
+            throw new MemoNotFoundException(
+                    "削除対象のメモが見つかりません。");
+        }
+        memoRepository.deleteById(id);
     }
 }

@@ -32,7 +32,7 @@ public class MemoController {
         this.memoService = memoService;
     }
 
-    /* 一覧 */
+    /* 一覧画面表示 */
     @GetMapping("/")
     public String index(
             MemoDto memoDto,
@@ -48,7 +48,7 @@ public class MemoController {
         return "index";
     }
 
-    /* 追加 */
+    /* メモ追加 */
     @PostMapping("/add")
     public String add(
             @Validated MemoDto memoDto,
@@ -74,11 +74,32 @@ public class MemoController {
         return "redirect:/";
     }
 
-    /* 削除 */
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        memoService.deleteById(id);
-        return "redirect:/";
+    /* 検索 */
+    @GetMapping("/search")
+    public String search(
+            MemoDto memoDto,
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort,
+            Model model) {
+
+        Page<MemoEntity> memoPage =
+                memoService.searchPage(page, sort, keyword);
+
+        model.addAttribute("memos", memoPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", memoPage.getTotalPages());
+        model.addAttribute("sort", sort);
+        model.addAttribute("keyword", keyword);
+        return "index";
+    }
+
+    /* 詳細表示 */
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        MemoEntity memo = memoService.findById(id);
+        model.addAttribute("memo", memo);
+        return "detail";
     }
 
     /* 編集画面表示 */
@@ -87,14 +108,13 @@ public class MemoController {
 
         MemoEntity entity = memoService.findById(id);
 
-        // Entity → DTO へ明示的に詰め替え
         MemoDto dto = new MemoDto();
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
         dto.setContent(entity.getContent());
 
-        model.addAttribute("memoDto", dto);       // フォーム用
-        model.addAttribute("memoEntity", entity); // 表示専用
+        model.addAttribute("memoDto", dto);
+        model.addAttribute("memoEntity", entity);
         return "edit";
     }
 
@@ -117,35 +137,14 @@ public class MemoController {
         return "redirect:/";
     }
 
-    /* 検索 */
-    @GetMapping("/search")
-    public String search(
-            MemoDto memoDto,
-            @RequestParam String keyword,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "asc") String sort,
-            Model model) {
-
-        Page<MemoEntity> memoPage =
-                memoService.searchPage(page, sort, keyword);
-
-        model.addAttribute("memos", memoPage.getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", memoPage.getTotalPages());
-        model.addAttribute("sort", sort);
-        model.addAttribute("keyword", keyword);
-        return "index";
+    /* 削除 */
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        memoService.deleteById(id);
+        return "redirect:/";
     }
 
-    /* 詳細 */
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        MemoEntity memo = memoService.findById(id);
-        model.addAttribute("memo", memo);
-        return "detail";
-    }
-
-    /* 404 */
+    /* 404エラー処理 */
     @ExceptionHandler(MemoNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleNotFoundException(

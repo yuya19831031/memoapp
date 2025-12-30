@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>メモ詳細</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
+	<meta charset="UTF-8">
+	<title>メモ詳細</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
 </head>
+
 <body>
 
-    <h1>メモ詳細</h1>
+	<h1>メモ詳細</h1>
 
-    <p>
-        <strong>タイトル：</strong>
-        <span th:text="${memo.title}"></span>
-    </p>
+	<p>
+		<strong>タイトル：</strong>
+		<span th:text="${memo.title}"></span>
+	</p>
 
-    <p><strong>内容：</strong></p>
-    <pre th:text="${memo.content}"></pre>
+	<p><strong>内容：</strong></p>
+	<pre th:text="${memo.content}"></pre>
 
-    <p>
-        <strong>作成日：</strong>
-        <span th:text="${memo.createdAt != null 
+	<p>
+		<strong>作成日：</strong>
+		<span th:text="${memo.createdAt != null 
             ? #temporals.format(memo.createdAt, 'yyyy/MM/dd HH:mm') 
             : '---'}"></span>
-    </p>
+	</p>
 
-    <p>
-        <strong>最終更新：</strong>
-        <span th:text="${memo.updatedAt != null 
+	<p>
+		<strong>最終更新：</strong>
+		<span th:text="${memo.updatedAt != null 
             ? #temporals.format(memo.updatedAt, 'yyyy/MM/dd HH:mm') 
             : '---'}"></span>
-    </p>
+	</p>
 
-    <a href="/">一覧に戻る</a>
-    <a th:href="@{/edit/{id}(id=${memo.id})}">編集</a>
+	<a href="/">一覧に戻る</a>
+	<a th:href="@{/edit/{id}(id=${memo.id})}">編集</a>
 
 </body>
+
 </html>
