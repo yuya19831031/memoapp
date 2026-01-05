@@ -26,13 +26,23 @@ CRUD処理だけでなく、バリデーション、例外処理、ページン�
 
 ## 使用技術
 
-- Java 17
+- Java
 - Spring Boot
 - Spring MVC
 - Spring Data JPA
 - Thymeleaf
 - H2 Database
 - Maven
+
+---
+
+## 開発環境
+
+OS：macOS
+
+IDE：Eclipse
+
+Javaバージョン：17
 
 ---
 
