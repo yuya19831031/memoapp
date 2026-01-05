@@ -71,3 +71,8 @@
 2025-12-31T07:46:08.079+09:00  INFO 10302 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-12-31T07:46:08.080+09:00  INFO 10302 --- [memoapp] [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2025-12-31T07:46:19.986+09:00  INFO 10302 --- [memoapp] [http-nio-8086-exec-4] c.fc.memoapp.controller.MemoController   : メモを追加しました title=j, contentLength=5
+2025-12-31T07:57:41.101+09:00  INFO 10302 --- [memoapp] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-31T07:57:41.141+09:00  INFO 10302 --- [memoapp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-31T07:57:41.157+09:00  INFO 10302 --- [memoapp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-31T07:57:41.175+09:00  INFO 10302 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-31T07:57:41.192+09:00  INFO 10302 --- [memoapp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
